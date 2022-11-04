@@ -117,7 +117,7 @@ export const Home = ({ setAuthCheck }) => {
           backgroundImage: `url(${headerImage})`,
         }}
       >
-        <button className="py-2 px-6 rounded bg-sky-700 hover:bg-sky-600 hover:text-white ease-linear duration-200 fixed bottom-20 text-white" onClick={()  navRedirect('/auth')}>Login</button>
+        <button className="py-2 px-6 rounded bg-sky-700 hover:bg-sky-600 hover:text-white ease-linear duration-200 fixed bottom-20 text-white" onClick={() => navRedirect('/auth')}>Login</button>
         <div className=" md:flex md:columns-2 justify-center items-center">
           <form onSubmit={handleSubmit} className="md:mb-0 -mb-36">
             <label className="text-white text-md font-semibold">
