@@ -13,6 +13,19 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    public function tamu(Request $request)
+    {
+        $reedem = KodeVoucher::all();
+        $reedemArray = array();
+        foreach ($reedem as $rdm) {
+            array_push($reedemArray, $rdm->reward);
+        }
+        return response()->json([
+            'status' => 200,
+            'reedem' => $reedemArray,
+            'message' => 'Logged In Successfully!',
+        ]);
+    }
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [

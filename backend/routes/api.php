@@ -17,6 +17,7 @@ use App\Http\Controllers\ReedemController;
 |
 */
 
+Route::get('tamu', [AuthController::class, 'tamu']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 Route::get('view', [PendaftaranController::class, 'view']);

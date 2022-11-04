@@ -26,15 +26,16 @@ class ReedemController extends Controller
             if ($reedemDB) {
                 if ($reedemDB->jumlah > 0) {
                     $reedemDB->jumlah = $reedemDB->jumlah - 1;
-                    $reedemDB->update();
+                    // $reedemDB->update();
                     $reward = new Reward();
-                    $reward->user_id = auth('sanctum')->user()->id;
+                    // $reward->user_id = auth('sanctum')->user()->id;
                     $reward->reedem = $reedemDB->reedem;
                     $reward->reward = $reedemDB->reward;
-                    $reward->save();
+                    // $reward->save();
                     return response()->json([
                         'status' => 200,
                         'reward' => $reedemDB->reward,
+                        'reedem' => $reedemDB->reedem,
                         'messages' => 'Success',
                     ]);
                 } else {
