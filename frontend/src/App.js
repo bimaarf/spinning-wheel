@@ -8,6 +8,7 @@ import { InputReedem } from "./pages/Admin/InputReedem";
 import { Auth } from "./pages/Auth";
 import { Navbar } from "./pages/Components/Navbar";
 import { Home } from "./pages/Home";
+import { Loader } from "./pages/Loader";
 import { Whell } from "./pages/Whell";
 axios.defaults.baseURL = process.env.REACT_APP_API;
 axios.defaults.headers.post["Accept"] = "application/json";
@@ -43,6 +44,7 @@ function App() {
         <Route exact path="/" element={<Home setAuthCheck={setAuthCheck} />} />
         <Route exact path="/whell" element={<Whell />} />
         <Route exact path="/a/input-reedem" element={<InputReedem />} />
+        <Route exact path="/a/loader" element={<Loader />} />
         <Route
           exact
           path="/Auth"
