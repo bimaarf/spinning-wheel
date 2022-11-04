@@ -1,3 +1,42 @@
+.neonText {
+  width: 100px;
+  scale: calc(8.5);
+  color: rgba(255, 251, 0, 0);
+  box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #fff,
+    0 0 82px #fff,
+    0 0 92px #fff,
+    0 0 102px #fff,
+    0 0 151px #fff;
+  /* opacity: 0.5; */
+}
+@media only screen and (max-width: 600px) {
+  .neonTextM {
+    /* width: 100px; */
+    color: rgba(255, 251, 0, 0);
+    box-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #fff,
+      0 0 82px #fff,
+      0 0 92px #fff,
+      0 0 102px #fff,
+      0 0 151px #fff;
+    /* opacity: 0.5; */
+    /* scale: calc(10); */
+  }
+}
+.header-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top, right;
+  height: 100%;
+  width: 100%;
+}
 .App {
   text-align: center;
 }

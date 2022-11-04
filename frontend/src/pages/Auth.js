@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Login } from "./Login";
 import { Register } from "./Register";
 export const Auth = ({ setAuthCheck }) => {
+  const navRedirect = useNavigate();
   useEffect(() => {
     setAuthCheck(localStorage.getItem("auth_token") ? true : false);
   });

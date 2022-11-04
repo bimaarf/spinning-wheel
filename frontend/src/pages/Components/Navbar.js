@@ -85,28 +85,38 @@ export const Navbar = ({ authCheck, setAuthCheck }) => {
                   Spinning Whell
                 </span>
               </Link>
-              <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4">
-                  <Link
-                    to="/"
-                    className={`${
-                      location.pathname === "/"
-                        ? "text-sky-500"
-                        : "text-slate-500"
-                    } px-3 py-2 rounded-md text-lg font-semibold hover:text-sky-500`}
-                    aria-current="page"
-                  >
-                    Beranda
-                  </Link>
+              {localStorage.getItem("auth_token") && (
+                <>
+                  <div className="hidden sm:ml-6 sm:block">
+                    <div className="flex space-x-4">
+                      <Link
+                        to="/"
+                        className={`${
+                          location.pathname === "/"
+                            ? "text-sky-500"
+                            : "text-slate-500"
+                        } px-3 py-2 rounded-md text-lg font-semibold hover:text-sky-500`}
+                        aria-current="page"
+                      >
+                        Beranda
+                      </Link>
 
-                  <Link
-                    to="/a/input-reedem"
-                    className="text-slate-500 hover:text-sky-500 px-3 py-2 rounded-md text-lg font-semibold"
+                      <Link
+                        to="/a/input-reedem"
+                        className="text-slate-500 hover:text-sky-500 px-3 py-2 rounded-md text-lg font-semibold"
+                      >
+                        Input Reedem
+                      </Link>
+                    </div>
+                  </div>
+                  <button
+                    onClick={logoutNow}
+                    className="text-red-600 hover:text-sky-500 px-3 py-2 rounded-md text-lg font-semibold hidden md:block"
                   >
-                    Input Reedem
-                  </Link>
-                </div>
-              </div>
+                    Logout
+                  </button>
+                </>
+              )}
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               {localStorage.getItem("auth_token") ? (
@@ -118,12 +128,14 @@ export const Navbar = ({ authCheck, setAuthCheck }) => {
                   </div>
                 </div>
               ) : (
-                <Link
-                  to="/auth"
-                  className="bg-gray-50 hover:bg-gray-100 duration-300 ease-in-out py-2 px-2 rounded-sm border text-sky-500 font-semibold"
-                >
-                  Login / Register
-                </Link>
+                <>
+                  <Link
+                    to="/auth"
+                    className="bg-gray-50 hover:bg-gray-100 duration-300 ease-in-out py-2 px-2 rounded-sm border text-sky-500 font-semibold"
+                  >
+                    Login / Register
+                  </Link>
+                </>
               )}
             </div>
           </div>
@@ -133,30 +145,39 @@ export const Navbar = ({ authCheck, setAuthCheck }) => {
           className={`${showList ? "md:hidden" : "hidden"}`}
           id="mobile-menu"
         >
-          <div className="space-y-1 px-2 pt-2 pb-3">
-            <Link
-              onClick={handleToggle}
-              to="/"
-              className={`${
-                location.pathname === "/" ? "text-sky-500" : "text-slate-500"
-              }  hover:text-sky-500 block px-3 py-2 rounded-md text-base font-medium`}
-              aria-current="page"
-            >
-              Beranda
-            </Link>
+          {" "}
+          {localStorage.getItem("auth_token") && (
+            <div className="space-y-1 px-2 pt-2 pb-3">
+              <Link
+                onClick={handleToggle}
+                to="/"
+                className={`${
+                  location.pathname === "/" ? "text-sky-500" : "text-slate-500"
+                }  hover:text-sky-500 block px-3 py-2 rounded-md text-base font-medium`}
+                aria-current="page"
+              >
+                Beranda
+              </Link>
 
-            <Link
-              onClick={handleToggle}
-              to="/a/input-reedem"
-              className={`${
-                location.pathname === "/a/input-reedem"
-                  ? "text-sky-500"
-                  : "text-slate-500"
-              }  hover:text-sky-500 block px-3 py-2 rounded-md text-base font-medium`}
-            >
-              Input Reedem
-            </Link>
-          </div>
+              <Link
+                onClick={handleToggle}
+                to="/a/input-reedem"
+                className={`${
+                  location.pathname === "/a/input-reedem"
+                    ? "text-sky-500"
+                    : "text-slate-500"
+                }  hover:text-sky-500 block px-3 py-2 rounded-md text-base font-medium`}
+              >
+                Input Reedem
+              </Link>
+              <button
+                onClick={logoutNow}
+                className={`text-red-500 hover:text-sky-500 block px-3 py-2 rounded-md text-base font-medium`}
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </nav>
     </>

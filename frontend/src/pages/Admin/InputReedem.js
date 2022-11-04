@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Sidebar } from "../Components/Sidebar";
 export const InputReedem = () => {
@@ -11,7 +11,9 @@ export const InputReedem = () => {
       jumlah: "",
     },
   ]);
+  const navRedirect = useNavigate();
   useEffect(() => {
+    !localStorage.getItem("auth_token") && navRedirect("/auth");
     getReedemAPI();
   }, []);
   const getReedemAPI = () => {
@@ -137,7 +139,7 @@ export const InputReedem = () => {
                               Jumlah Maksimal Reedem
                             </label>
                             <input
-                              min={1}
+                              min={0}
                               type="number"
                               onChange={(e) => handleChange(e, i)}
                               value={x.jumlah}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -24,18 +24,23 @@ function App() {
   const [authCheck, setAuthCheck] = useState(false);
   const navRedirect = useNavigate();
   useEffect(() => {
-    if (authCheck === false) {
-      navRedirect("/auth");
-    }
     if (localStorage.getItem("auth_token")) return setAuthCheck(true);
     setAuthCheck(false);
   }, []);
+  //
+
+
+  const location = useLocation();
   return (
     <>
       <ToastContainer />
-      <Navbar authCheck={authCheck} setAuthCheck={setAuthCheck} />
+      {authCheck === true &&
+        location.pathname !== "/" &&
+        location.pathname !== "/whell" && (
+          <Navbar authCheck={authCheck} setAuthCheck={setAuthCheck} />
+        )}
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Home setAuthCheck={setAuthCheck} />} />
         <Route exact path="/whell" element={<Whell />} />
         <Route exact path="/a/input-reedem" element={<InputReedem />} />
         <Route
